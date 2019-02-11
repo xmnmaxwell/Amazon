@@ -5,6 +5,7 @@ Example 2:
 Input: J = "z", S = "ZZ"
 Output: 0
 *******************************************************************************************
+(m+n)
 class Solution {
     public int numJewelsInStones(String J, String S) {
         int count = 0;
