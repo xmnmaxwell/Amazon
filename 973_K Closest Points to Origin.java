@@ -6,6 +6,9 @@ Time Complexity O(n * logK)
 ***************************************************************************************
 class Solution {
     public int[][] kClosest(int[][] points, int K) {
+        if (points == null || points.length == 0) {
+            return new int[0][0];
+        }
         int[][] res = new int[K][2];
         PriorityQueue<int[]> pq = new PriorityQueue<>(K, new Comparator<int[]>(){
              public int compare(int[] o1, int[] o2){
