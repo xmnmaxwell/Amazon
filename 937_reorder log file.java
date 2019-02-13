@@ -2,6 +2,7 @@ Input: ["a1 9 2 3 1","g1 act car","zo4 4 7","ab1 off key dog","a8 act zoo"]
 Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
 头文件字母数字混合，但后面的一定全是数字或全是字母，把字母的按排序放前面，数字的保持顺序不变
 *********************************************************************************
+AlogA  A
 class Solution {
     public String[] reorderLogFiles(String[] logs) {
         if (logs == null || logs.length == 0) return logs;
