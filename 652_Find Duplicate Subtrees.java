@@ -19,21 +19,20 @@ and
 //O(n2) O(n2)    
 *******************************************************************************************
 class Solution {
-    Map<String, Integer> count;
-    List<TreeNode> ans;
+    Map<String, Integer> map;
+    List<TreeNode> res;
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
-        count = new HashMap();
-        ans = new ArrayList();
-        collect(root);
-        return ans;
+        map = new HashMap<>();
+        res = new ArrayList<>();
+        helper(root);
+        return res;
     }
-
-    public String collect(TreeNode node) {
-        if (node == null) return "#";
-        String serial = node.val + "," + collect(node.left) + "," + collect(node.right);
-        count.put(serial, count.getOrDefault(serial, 0) + 1);
-        if (count.get(serial) == 2)
-            ans.add(node);
+    public String helper(TreeNode node){
+        if (node == null)  return null;
+        String serial = node.val + "," + helper(node.left) + "," + helper(node.right);
+        map.put(serial, map.getOrDefault(serial, 0) +1);
+        if (map.get(serial) == 2)
+            res.add(node);
         return serial;
     }
 }
