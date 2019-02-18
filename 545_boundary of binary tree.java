@@ -41,12 +41,13 @@ class Solution {
             ans.add(node.val);
             return;
         }
+        // three different conditions: the current node is on leftb, or on rightb, or neither
         if (onLeftBound) {
             ans.add(node.val);
-            if (node.left != null) {
+            if (node.left != null) { // the current node is on leftb, its left also on, leftb is true.
                 traverseHelper(node.left, true, false, ans);// if left subtree exists
             }
-            if (node.right != null) {
+            if (node.right != null) { // if 7 exists, 7 is the leftb
                 traverseHelper(node.right, node.left == null, false, ans);
             }
         } else if (onRightBound) {
