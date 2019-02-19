@@ -50,7 +50,7 @@ public class Solution {
     }
 }
 *************************************************************************************************************************************
-212. pring all 
+212. print all 
 I make my DFS with a tire but a word. The Trie is formed by all the words in given words. Then during the DFS, for each current formed word, 
 I check if it is in the Trie.
 public class Solution {
