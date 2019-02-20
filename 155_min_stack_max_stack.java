@@ -66,11 +66,11 @@ class MaxStack {
     }
     
     public int popMax() {
-        int max = maxStack.peek();
-        Stack<Integer> temp = new Stack();
-        while (top() != max) temp.push(pop());
+        int max = maxStack.peek(); // we get the max value
+        Stack<Integer> temp = new Stack(); // create new stack to 
+        while (top() != max) temp.push(pop()); // while top is not max, we put the element in the temp stack
         pop();
-        while (!temp.isEmpty()) push(temp.pop());
-        return max;
+        while (!temp.isEmpty()) push(temp.pop()); // put the element from temp to current stack
+        return max; // return max
     }
 }
