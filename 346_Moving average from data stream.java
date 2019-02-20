@@ -1,36 +1,23 @@
-
+Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
+O(1) time + O(maxsize)
 **********************************************************
-class MovingAverage {
-    Queue<Integer> q;
-    int size;
-    double sum;
-    /** Initialize your data structure here. */
-    public MovingAverage(int size) {
-        q = new LinkedList<Integer>();
-        this.size = size;
-    }
-    
-    public double next(int val) {
-        if (q.size() < size) {
-            q.offer(val);
-            int n = q.size();
-            while (!q.isEmpty()){
-                sum += q.poll();
-            }
-            return (double) (sum)/ (double) (n);
-        } else {
-            q.poll();
-            q.offer(val);
-            while (!q.isEmpty()){
-                sum += q.poll();
-            }
-            return (double) (sum)/ (double) (size);
-        }
-    }
+public class MovingAverage {
+private double previousSum = 0.0;
+private int maxSize; // size we set for the window
+private Queue<Integer> currentWindow;
+// initialize the varaibles
+public MovingAverage(int size) {
+    currentWindow = new LinkedList<Integer>();
+    maxSize = size;
 }
 
-/**
- * Your MovingAverage object will be instantiated and called as such:
- * MovingAverage obj = new MovingAverage(size);
- * double param_1 = obj.next(val);
- */
+public double next(int val) {
+    if (currentWindow.size() == maxSize) // first check if currentwindow size is equal to maxSize
+    {
+        previousSum -= currentWindow.remove(); //remove element in the queue 
+    }
+    
+    previousSum += val; // add new val to the sum
+    currentWindow.add(val); // add new elment in the queue
+    return previousSum / currentWindow.size(); // return average
+}}
