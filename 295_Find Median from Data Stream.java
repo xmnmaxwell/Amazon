@@ -1,15 +1,27 @@
-//O(logn) O(n)
-class MedianFinder {    
-    PriorityQueue<Integer> lo = new PriorityQueue<Integer>(Collections.reverseOrder());
-    PriorityQueue<Integer> hi = new PriorityQueue<Integer>();
 
+*******************************************************************
+//add O(logn) find O(1)
+class MedianFinder {    
+    PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+    
+    public MedianFinder(){
+        minHeap = new PriorityQueue<Integer>();
+        maxHeap = new PriorityQueue<Integer>(Collections.reverseOrder());
+    }
+    
     public void addNum(int num) {
-        lo.add(num);
-        hi.add(lo.poll());        
-        if(hi.size() > lo.size())lo.add(hi.poll());
+        minHeap.offer(num);   //each element is added to minHeap
+        maxHeap.offer(minHeap.poll());  // then the minimum element is poped out and put in maxHeap, assure minHeap is greater than maxHeap      
+        if(maxHeap.size() > minHeap.size()) 
+            minHeap.offer(maxHeap.poll()); // two heaps need to be loaded balanced
     }
     
     public double findMedian() {
-        return lo.size() > hi.size() ? (double)lo.peek() : (lo.peek() + hi.peek()) * 0.5;
+        if(minHeap.size() > maxHeap.size()){
+            return minHeap.peek();
+        }else {
+            return (minHeap.peek()+maxHeap.peek())/2.0;
+        }
     }
 }
