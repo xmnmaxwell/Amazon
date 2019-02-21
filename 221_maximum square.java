@@ -21,6 +21,7 @@ public class Solution {
             for (int j = 1; j <= cols; j++) {
                 if (matrix[i-1][j-1] == '1'){
                     dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j]), dp[i - 1][j - 1]) + 1;
+                    //dp is decided by the smallest conjacent point dp value. 
                     maxsqlen = Math.max(maxsqlen, dp[i][j]);
                 }
             }
