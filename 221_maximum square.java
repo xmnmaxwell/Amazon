@@ -10,7 +10,6 @@ Output: 4
 O(mn) + O(mn)
 dp(i,j) represents the side length of the maximum square whose bottom right corner is the cell with index (i,j) in the original matrix.
 Starting from index (0,0), for every 1 found in the original matrix, we update the value of the current element as
-\text{dp}(i, j) = \min \big( \text{dp}(i-1, j), \text{dp}(i-1, j-1), \text{dp}(i, j-1) \big) + 1. dp(i,j)=min(dp(i−1,j),dp(i−1,j−1),dp(i,j−1))+1.
 **************************************************************************************************
 public class Solution {
     public int maximalSquare(char[][] matrix) {
