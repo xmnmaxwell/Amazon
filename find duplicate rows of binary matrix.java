@@ -35,6 +35,7 @@ class Trie {
 };
 
 public class Solution {
+	int count = 0;
 	// Iterative function to insert array in Trie.
 	public boolean insert(Trie head, int[] row) {
 		// start from root node
@@ -54,15 +55,19 @@ public class Solution {
 			return false;
 		}
 		// mark leaf node and return true
+		count++;
 		return (curr.isLeaf = true);
 	}
     public int[] DuplicateRows(int[][] matrix) { 
-    Trie head = new Trie(); 
-  
+    	    Trie head = new Trie(); 
+	    int[] res = new int[];
     /*inserting into Trie and checking for dulpicates*/
-    for (int i = 0; i < matrix.length; i++) 
+    	for (int i = 0; i < matrix.length; i++) {
         // If already exists 
-        if (!insert(head, matrix[i])) 
-            
-    } 
+        	if (!insert(head, matrix[i])) {
+			res[0] = count - 1;
+			res[1] = i
+    		}   
+    	}
+    }    
 }
