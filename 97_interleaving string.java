@@ -7,7 +7,8 @@ public class Solution {
             return false;
         }
         boolean dp[][] = new boolean[s1.length() + 1][s2.length() + 1];
-    if it is possible to obtain a substring of length (i+j+2)(i+j+2) which is a prefix of s3s3 by some interleaving of prefixes of strings s1s1 and s2s2//the current 
+//if it is possible to obtain a substring of length (i+j+2) which is a prefix of s3 by some 
+//interleaving of prefixes of strings s1 and s2
         for (int i = 0; i <= s1.length(); i++) {
             for (int j = 0; j <= s2.length(); j++) {
                 if (i == 0 && j == 0) {
