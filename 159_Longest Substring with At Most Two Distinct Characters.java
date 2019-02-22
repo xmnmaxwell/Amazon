@@ -3,35 +3,25 @@ sliding window
 use hashmap to store the different characters in current window
 abbbbbbbbbbbbbbca
 ********************************************************************************
-class Solution {
-  public int lengthOfLongestSubstringTwoDistinct(String s) {
-    int n = s.length();
-    if (n < 3) return n;
-
-    // sliding window left and right pointers
-    int left = 0;
-    int right = 0;
-    // hashmap character -> its rightmost position 
-    // in the sliding window
-    HashMap<Character, Integer> hashmap = new HashMap<Character, Integer>();
-
-    int max_len = 2;
-
-    while (right < n) {
-      // slidewindow contains less than 3 characters
-      if (hashmap.size() < 3)
-        hashmap.put(s.charAt(right), right++);
-
-      // slidewindow contains 3 characters
-      if (hashmap.size() == 3) {
-        // delete the leftmost character
-        int del_idx = Collections.min(hashmap.values());
-        hashmap.remove(s.charAt(del_idx));
-        // move left pointer of the slidewindow
-        left = del_idx + 1;
-      }
-     max_len = Math.max(max_len, right - left);
+public class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        Map<Character,Integer> map = new HashMap<>();
+        int start = 0, end = 0, counter = 0, len = 0;
+        while(end < s.length()){
+            char c = s.charAt(end);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            if(map.get(c) == 1) counter++;//new char
+            end++;
+            while(counter > 2){
+                char cTemp = s.charAt(start);
+                map.put(cTemp, map.get(cTemp) - 1);
+                if(map.get(cTemp) == 0){
+                    counter--;
+                }
+                start++;
+            }
+            len = Math.max(len, end-start);
+        }
+        return len;
     }
-    return max_len;
-  }
 }
