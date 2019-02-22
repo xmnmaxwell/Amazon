@@ -4,6 +4,7 @@ Explanation:
     For number 4 in the first array, you cannot find the next greater number for it in the second array, so output -1.
     For number 1 in the first array, the next greater number for it in the second array is 3.
     For number 2 in the first array, there is no next greater number for it in the second array, so output -1.
+O(mn) + O(m)
 ******************************************************************************************
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -23,6 +24,22 @@ class Solution {
                     index++;
                 }
                 if(index == nums2.length) res[j] = -1;
+            }
+        }
+        return res;
+    }
+}
+**********************************************************************************************
+public class Solution {
+    public int[] nextGreaterElements(int[] nums) {
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = -1;
+            for (int j = 1; j < nums.length; j++) {
+                if (nums[(i + j) % nums.length] > nums[i]) {
+                    res[i] = nums[(i + j) % nums.length];
+                    break;
+                }
             }
         }
         return res;
