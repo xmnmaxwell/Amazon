@@ -30,6 +30,7 @@ class Solution {
     }
 }
 **********************************************************************************************
+O(n2) + O(n)
 public class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int[] res = new int[nums.length];
